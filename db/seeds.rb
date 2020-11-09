@@ -16,3 +16,4 @@ Airport.create(code: 'LOS')
 Airport.create(code: 'TX')
 
 Flight.create(from_airport: Airport.first, to_airport: Airport.last, arrival_time: '2020-12-31 16:45:00', departure_time: '2020-12-31 17:45:00')
+Flight.create(from_airport: Airport[1], to_airport: Airport[2], arrival_time: '2020-12-31 16:49:00', departure_time: '2020-12-31 17:48:00')

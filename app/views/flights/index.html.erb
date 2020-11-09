@@ -1,0 +1,21 @@
+<%= form_with(url: '/flights', method: 'get', local: true) do |f| %>
+  <p> From: <%= f.collection_select(:from_airport_id, Airport.all, :id, :code) %> </p>
+  <p> To: <%= f.collection_select(:to_airport_id, Airport.all, :id, :code) %> </p>
+
+  <% available_flights = Flight.all.map do |flight|
+                          [flight.departure_time, flight.id] if flight.departure_time > Time.now
+                          end
+  %>
+
+  <p> Date: <%= select_tag(:id, options_for_select(available_flights)) %> </p>
+  <%= submit_tag("Search")%>
+
+<% end %>
+
+
+  <% unless @flights.nil? %>
+    <% @flights.each do |flight| %>
+      </p> <%= flight.id  %> </p>
+    <% end %>
+  <% end %>
+  <p> hi <%= params.inspect %> </p>

@@ -1,4 +1,0 @@
-<%= form_with model: @flight do |flight_form| %>
-  <p> From: <%= flight_form.collection_select(:airport_id, Airport.all, :id, :code) %> </p>
-  <p> To: <%= flight_form.collection_select(:airport_id, Airport.all, :id, :code) %> </p>
-<% end %>
