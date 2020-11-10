@@ -14,6 +14,13 @@ Airport.create(code: 'NYC')
 Airport.create(code: 'SFC')
 Airport.create(code: 'LOS')
 Airport.create(code: 'TX')
+Airport.create(code: 'LA')
 
-Flight.create(from_airport: Airport.first, to_airport: Airport.last, arrival_time: '2020-12-31 16:45:00', departure_time: '2020-12-31 17:45:00')
-Flight.create(from_airport: Airport[1], to_airport: Airport[2], arrival_time: '2020-12-31 16:49:00', departure_time: '2020-12-31 17:48:00')
+departure = -> { Time.now + rand(10_000) }
+arrival = -> { Time.now + rand(70_000)}
+
+airports = Airport.all.to_a.permutation(2).to_a
+
+airports.sample(5).each do |id|
+  Flight.create(from_airport: id[0], to_airport: id[1], arrival_time: arrival.call, departure_time: departure.call)
+end
