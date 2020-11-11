@@ -1,0 +1,22 @@
+<%= form_with(model: @booking, local: true) do |f| %>
+  <h1>Flight Details </h1>
+  <strong> Flight ID: </strong> <span> <%= @flight.id %> </span> </br>
+  <strong> Departure Date: </strong> <span> <%= @flight.departure_time.strftime('%a, %B %-d, %Y') %> </span> </br>
+  <strong> Departure Time: </strong> <span> <%= @flight.departure_time.strftime('%I:%M %p') %> <span> </br>
+  <strong> Route: </strong> <span> <%= @from_airport.code %> to <%= @to_airport.code %> </span> </br>
+
+  Addresses:
+  <ul>
+    <%= f.fields_for :passengers do |passengers_form| %> 
+        <li>
+          <%= passengers_form.label :name %> </br>
+          <%= passengers_form.text_field :name %> </br>
+
+          <%= passengers_form.label :email %> </br>
+          <%= passengers_form.text_field :email %> </br>
+        </li>
+    <% end %>
+  </ul>
+  <%= f.hidden_field :flight_id, :value => @flight.id %>
+  <%= f.submit('Submit')%>
+<% end %>

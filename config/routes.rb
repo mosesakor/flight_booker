@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   root 'flights#index'
   # match '/flight' => 'flights', via: :get
   resources :flights
+  resources :bookings
 
 end
