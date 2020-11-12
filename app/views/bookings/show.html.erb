@@ -1,0 +1,12 @@
+<div>
+  <h1> Flight Details </h1>
+  <p> Flight ID: <%= @booking.flight.id%> </p>
+  <p> Trip: <%= "#{@booking.flight.from_airport.code} to #{@booking.flight.to_airport.code}" %> </p>
+  <p> Departure Time: <%= @booking.flight.departure_time.strftime("%A, %d %b %Y %l:%M %p") %> </p>
+  <p> Arrival Time: <%= @booking.flight.arrival_time.strftime("%A, %d %b %Y %l:%M %p") %> </p>
+  <h1> Passengers </h1>
+  <% @booking.passengers.each do |passenger| %>
+    <p> <%= passenger.name %> </p>
+  <% end %>
+</div>
+
